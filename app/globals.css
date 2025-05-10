@@ -1,0 +1,362 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.5% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Loading animation */
+@keyframes pulse-loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-loading {
+  animation: pulse-loading 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes slide-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-slide-loading {
+  animation: slide-loading 1.5s infinite;
+}
+
+/* Progress bar animation */
+@keyframes progress-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.8);
+  }
+}
+
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: progress-shine 1.5s infinite;
+}
+
+@keyframes progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Mobile header adjustments */
+@media (max-width: 640px) {
+  main {
+    padding-top: 60px; /* Add space for fixed header */
+  }
+
+  #home {
+    min-height: calc(100vh - 60px); /* Adjust for header height */
+  }
+}
+
+/* Floating animation for profile photo */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle shadow animation to enhance floating effect */
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.08);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.animate-shadow {
+  animation: shadow-pulse 6s ease-in-out infinite;
+}
+
+/* Dark mode shadow variant */
+.dark .animate-shadow {
+  animation: shadow-pulse-dark 6s ease-in-out infinite;
+}
+
+@keyframes shadow-pulse-dark {
+  0% {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Scroll down button styles */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scroll-down-button {
+  position: relative;
+}
+
+.scroll-down-button::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(var(--primary), 0.1);
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+/* Contact section styles */
+#contact .bg-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact .bg-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark #contact .bg-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark #contact .bg-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar navigation styles */
+@media (max-width: 640px) {
+  main {
+    padding-left: 0;
+  }
+
+  .sidebar-nav {
+    display: none; /* Hide sidebar on mobile */
+  }
+}
+
+/* Add padding to main content to accommodate sidebar */
+@media (min-width: 640px) {
+  main {
+    padding-left: 5rem;
+  }
+
+  .sidebar-nav nav {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Theme toggle animation */
+.theme-toggle-rays {
+  transform-origin: center;
+}
+
+.theme-toggle-moon {
+  transform-origin: center;
+}
+
+/* Page transition for theme change */
+.theme-transition {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Stars animation for dark mode */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--twinkle-duration, 2s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+/* Tooltip styles for sidebar navigation */
+.nav-tooltip {
+  position: absolute;
+  left: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-nav a:hover .nav-tooltip {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Mobile header styles */
+.mobile-header-button {
+  @apply flex items-center justify-center w-9 h-9 rounded-full bg-purple-500 text-white;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-header-button:active {
+  transform: scale(0.95);
+}
+
+/* Add a subtle animation for the header entrance */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header-entrance {
+  animation: slideDown 0.3s ease-out forwards;
+}
