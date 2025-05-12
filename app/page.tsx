@@ -510,9 +510,9 @@ export default function Home() {
                     <ProjectCard
                       title="FitSync - Tracking Workout"
                       description="A map tracking workout (Running, Cycling) contain distance, duration, cadence (steps), elev gain (meters)."
-                      image="/images/projects/fitsync.jpeg"
+                      image="/images/projects/fitsync.jpg"
                       technologies={["Javascript", "CSS", "Leaflet"]}
-                      demoUrl="fitsync-work.netlify.app"
+                      demoUrl="https://fitsync-work.netlify.app/"
                       codeUrl="https://github.com/mynameisalvn/fitsync-workout"
                     />
                   </StaggeredItem>
