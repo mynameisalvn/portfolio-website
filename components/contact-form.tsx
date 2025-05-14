@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactForm() {
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Message sent!",
       description: "Thanks for reaching out. I'll get back to you soon.",
-    })
+    });
 
-    setIsSubmitting(false)
-    e.currentTarget.reset()
-  }
+    setIsSubmitting(false);
+    e.currentTarget.reset();
+  };
 
   return (
     <motion.form
@@ -44,7 +44,7 @@ export default function ContactForm() {
         <Input
           id="name"
           name="name"
-          placeholder="alpin..."
+          placeholder="Your name ..."
           required
           className="bg-background/50 border-muted-foreground/20"
         />
@@ -71,20 +71,28 @@ export default function ContactForm() {
         <Textarea
           id="message"
           name="message"
-          placeholder="tell me about something good..."
+          placeholder="Type your message here!"
           rows={5}
           required
           className="bg-background/50 border-muted-foreground/20"
         />
       </div>
 
-      <Button type="submit" className="w-full bg-purple-500 hover:bg-purple-600 text-white" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        className="w-full bg-purple-500 hover:bg-purple-600 text-white"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? (
           <span className="flex items-center">
             <motion.div
               className="mr-2 h-4 w-4 border-2 border-t-transparent border-white rounded-full"
               animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              transition={{
+                duration: 1,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
             />
             Sending...
           </span>
@@ -93,5 +101,5 @@ export default function ContactForm() {
         )}
       </Button>
     </motion.form>
-  )
+  );
 }

@@ -456,11 +456,11 @@ export default function Home() {
                   <ExperienceTimeline
                     experiences={[
                       {
-                        title: "Web Developer",
+                        title: "Full-stack Developer",
                         company: "Gana IT Consultant - Internship",
                         companyUrl: "https://www.ganaitconsultant.com/",
                         location: "Bali, Indonesia",
-                        period: "Jan 2022 - Dec 2022",
+                        period: "Aug 2022 - Dec 2022",
                         description:
                           "Developed and maintained multiple web applications for clients across various industries. Worked on both frontend and backend aspects of projects.\n\nKey responsibilities included:\n• Building responsive user interfaces\n• Implementing backend functionality\n• Database design and optimization\n• Collaborating with design and product teams",
                         technologies: [
